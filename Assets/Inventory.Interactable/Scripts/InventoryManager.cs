@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEditor;
 using UnityEngine.UI;
 
+[ExecuteInEditMode]
 public class InventoryManager : MonoBehaviour
 {
     public GameObject _inventoryMenu;
@@ -31,9 +32,9 @@ public class InventoryManager : MonoBehaviour
     public KeyCode _openInventory = KeyCode.I;
     //InvalidOperationException: You are trying to read Input using the UnityEngine.Input class, but you have switched active Input handling to Input System package in Player Settings.
     //UnityEngine.Input.GetKey(UnityEngine.KeyCode key
-   
 
-       [Header("UI Colors")]
+
+    [Header("UI Colors")]
     [SerializeField]
     [ColorUsage(true)]
     private Color _menu;
@@ -58,6 +59,7 @@ public class InventoryManager : MonoBehaviour
     {
         // Opens Inventory when key is pressed
         //Pauses game when inventory is open
+        /*
         if ((Input.GetKey(_openInventory)) && _menuOpen)
         {
             Time.timeScale = 1;
@@ -70,11 +72,15 @@ public class InventoryManager : MonoBehaviour
             _inventoryMenu.SetActive(true);
             _menuOpen = true;
         }
+        */
 
+#if UNITY_EDITOR
         UIColor();
+#endif
     }
 
     [SerializeField]
+    [ContextMenu("Update UI Color")]
     public void UIColor()
     {
         _imageMenu.color = _menu;
@@ -83,5 +89,8 @@ public class InventoryManager : MonoBehaviour
         _imageInventoryDescription.color = _inventoryDescription;
         _imageItemImage.color = _itemImage;
         _imageItemDescription.color = _itemDescription;
+
+
     }
 }
+  
