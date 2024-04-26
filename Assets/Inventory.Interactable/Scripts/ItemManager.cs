@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
     [SerializeField]
     private string _itemName;
     [SerializeField]
-    private string _quantity;
+    private int _quantity;
     [SerializeField]
-    private string _itemSprite;
+    private Sprite itemSprite;
 
     private InventoryManager _inventoryManager;
 
@@ -22,7 +23,7 @@ public class ItemManager : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            _inventoryManager.AddItem(_itemName, _quantity, _itemSprite);
+            _inventoryManager.AddItem(_itemName, _quantity, itemSprite);
             Destroy(gameObject);
         }
     }
