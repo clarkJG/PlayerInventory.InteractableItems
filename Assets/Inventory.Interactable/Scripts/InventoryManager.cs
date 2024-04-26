@@ -26,14 +26,6 @@ public class InventoryManager : MonoBehaviour
     [SerializeField]
     [Tooltip("Is the game paused or running in the background when inventory is opened")]
     public GameState _gameState;
-    /*
-    [SerializeField]
-    [Tooltip("Which key should be pressed to open the inventory")]
-    public KeyCode _openInventory = KeyCode.I;
-    */
-    //InvalidOperationException: You are trying to read Input using the UnityEngine.Input class, but you have switched active Input handling to Input System package in Player Settings.
-    //UnityEngine.Input.GetKey(UnityEngine.KeyCode key
-
 
     [Header("UI Colors")]
     //[SerializeField]
@@ -80,6 +72,11 @@ public class InventoryManager : MonoBehaviour
 #endif
     }
 
+    public void AddItem(string _itemName, int _quantity, Sprite _itemSprite)
+    {
+
+    }
+
     [SerializeField]
     [ContextMenu("Update UI Color")]
     public void UIColor()
@@ -90,8 +87,6 @@ public class InventoryManager : MonoBehaviour
         _imageInventoryDescription.color = _inventoryDescription;
         _imageItemImage.color = _itemImage;
         _imageItemDescription.color = _itemDescription;
-
-
     }
 }
 
