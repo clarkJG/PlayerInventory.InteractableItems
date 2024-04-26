@@ -23,10 +23,9 @@ public class InventoryManager : MonoBehaviour
         Running = 1
     }
 
-    [Header("Customizable Features")]
     [SerializeField]
     [Tooltip("Is the game paused or running in the background when inventory is opened")]
-    private GameState _gameState;
+    public GameState _gameState;
     /*
     [SerializeField]
     [Tooltip("Which key should be pressed to open the inventory")]
@@ -120,21 +119,21 @@ public class InventoryManagerEditor : Editor
 
     void OnEnable()
     {
-        _inventoryMenu = serializedObject.FindProperty("inventoryMenu");
-        _imageMenu = serializedObject.FindProperty("imageMenu");
-        _imageInventorySlots = serializedObject.FindProperty("imageInventorySlots");
-        _imageItemSlot = serializedObject.FindProperty("imageItemSlot");
-        _imageInventoryDescription = serializedObject.FindProperty("imageInventoryDescription");
-        _imageItemImage = serializedObject.FindProperty("imageItemImage");
-        _imageItemDescription = serializedObject.FindProperty("imageItemDescription");
+        _inventoryMenu = serializedObject.FindProperty("_inventoryMenu");
+        _imageMenu = serializedObject.FindProperty("_imageMenu");
+        _imageInventorySlots = serializedObject.FindProperty("_imageInventorySlots");
+        _imageItemSlot = serializedObject.FindProperty("_imageItemSlot");
+        _imageInventoryDescription = serializedObject.FindProperty("_imageInventoryDescription");
+        _imageItemImage = serializedObject.FindProperty("_imageItemImage");
+        _imageItemDescription = serializedObject.FindProperty("_imageItemDescription");
 
-        _gameState = serializedObject.FindProperty("gameState");
-        _menu = serializedObject.FindProperty("menu");
-        _inventorySlots = serializedObject.FindProperty("inventorySlots");
-        _itemSlot = serializedObject.FindProperty("itemSlot");
-        _inventoryDescription = serializedObject.FindProperty("inventoryDescription");
-        _itemImage = serializedObject.FindProperty("itemImage");
-        _itemDescription = serializedObject.FindProperty("itemDescription");
+        _gameState = serializedObject.FindProperty("_gameState");
+        _menu = serializedObject.FindProperty("_menu");
+        _inventorySlots = serializedObject.FindProperty("_inventorySlots");
+        _itemSlot = serializedObject.FindProperty("_itemSlot");
+        _inventoryDescription = serializedObject.FindProperty("_inventoryDescription");
+        _itemImage = serializedObject.FindProperty("_itemImage");
+        _itemDescription = serializedObject.FindProperty("_itemDescription");
 
     }
 
@@ -142,7 +141,7 @@ public class InventoryManagerEditor : Editor
     {
         serializedObject.Update();
 
-        showInfo = EditorGUILayout.Foldout(showInfo, "Don't Change");
+        showInfo = EditorGUILayout.BeginFoldoutHeaderGroup(showInfo, "Don't Change");
         if (showInfo)
         {
             EditorGUILayout.PropertyField(_inventoryMenu);
@@ -153,9 +152,9 @@ public class InventoryManagerEditor : Editor
             EditorGUILayout.PropertyField(_imageItemImage);
             EditorGUILayout.PropertyField(_imageItemDescription);
         }
-        //EditorGUILayout.EndFoldoutHeaderGroup();
+        EditorGUILayout.EndFoldoutHeaderGroup();
 
-        showCustom = EditorGUILayout.Foldout(showCustom, "Customizable Features");
+        showCustom = EditorGUILayout.BeginFoldoutHeaderGroup(showCustom, "Customizable Features");
         if (showCustom)
         {
             EditorGUILayout.PropertyField(_gameState);
@@ -166,7 +165,7 @@ public class InventoryManagerEditor : Editor
             EditorGUILayout.PropertyField(_itemImage);
             EditorGUILayout.PropertyField(_itemDescription);
         }
-        //EditorGUILayout.EndFoldoutHeaderGroup();
+        EditorGUILayout.EndFoldoutHeaderGroup();
 
         serializedObject.ApplyModifiedProperties();
     }

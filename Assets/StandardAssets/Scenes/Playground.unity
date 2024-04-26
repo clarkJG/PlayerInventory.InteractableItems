@@ -1042,7 +1042,6 @@ MonoBehaviour:
   _imageItemImage: {fileID: 1636188075}
   _imageItemDescription: {fileID: 788908563}
   _gameState: 0
-  _openInventory: 105
   _menu: {r: 0, g: 0, b: 0, a: 0.19607843}
   _inventorySlots: {r: 0, g: 0, b: 0, a: 0.19607843}
   _itemSlot: {r: 1, g: 1, b: 1, a: 0.19607843}
