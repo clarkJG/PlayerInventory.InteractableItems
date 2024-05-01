@@ -77,16 +77,26 @@ public class InventoryManager : MonoBehaviour
 #endif
     }
 
-    public void AddItem(string _itemName, int _quantity, Sprite _itemSprite)
+    // == WILL ONLY SAY WHAT ITEM WAS USED == 
+    public void UseItem(string _itemName)
+    {
+        Debug.Log(_itemName + " was used");     
+    }
+
+    public int AddItem(string _itemName, int _quantity, Sprite _itemSprite, string _descriptionOfItem)
     {
         for (int i = 0; i < _itemSlots.Length; i++)
         {
-            if(_itemSlots[i].isFull == false)
+            if(_itemSlots[i].isFull == false && _itemSlots[i]._itemName == _itemName || _itemSlots[i]._quantity == 0)
             {
-                _itemSlots[i].AddItem(_itemName, _quantity, _itemSprite);
-                return;
+                int leftOverItems = _itemSlots[i].AddItem(_itemName, _quantity, _itemSprite, _descriptionOfItem);
+                if(leftOverItems > 0)
+                    leftOverItems = AddItem(_itemName, leftOverItems, _itemSprite, _descriptionOfItem);
+
+                return leftOverItems;
             }
         }
+        return _quantity;
     }
 
     public void DeselectAllSlots()

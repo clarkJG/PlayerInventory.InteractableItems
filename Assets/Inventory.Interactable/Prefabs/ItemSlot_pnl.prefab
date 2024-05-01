@@ -31,7 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5682087354571569663}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -108,8 +108,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4303321513589768945}
-  - {fileID: 2360780353802858636}
   - {fileID: 6962194452883666801}
+  - {fileID: 2360780353802858636}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -170,12 +170,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: 
   _quantity: 0
-  _itemSprite: {fileID: 0}
+  _itemSprite: {fileID: 21300000, guid: 5c66ee8ad821c9f4d9f3effb8e11f056, type: 3}
   isFull: 0
+  _descriptionOfItem: 
+  _emptySprite: {fileID: 21300000, guid: 5c66ee8ad821c9f4d9f3effb8e11f056, type: 3}
+  _maxNumOfItems: 10
   _quantityText: {fileID: 1695386131638652248}
   _itemImage: {fileID: 5482237433847402474}
   _selectedShader: {fileID: 6374132223598759564}
   _selectedItem: 0
+  _itemDescriptionImage: {fileID: 0}
+  ItemDescriptionName_txt: {fileID: 0}
+  ItemDescription_txt: {fileID: 0}
 --- !u!1 &6374132223598759564
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +289,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5682087354571569663}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
