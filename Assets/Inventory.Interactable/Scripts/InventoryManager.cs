@@ -17,6 +17,7 @@ public class InventoryManager : MonoBehaviour
     public Image _imageItemImage;
     public Image _imageItemDescription;
 
+    public ItemSlotManager[] _itemSlots;
     public enum GameState
     {
         Paused = 0,
@@ -74,7 +75,14 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(string _itemName, int _quantity, Sprite _itemSprite)
     {
-        Debug.Log("itemName = " + _itemName + "quantity = " + _quantity + "itemSprite = " + _itemSprite);
+        for (int i = 0; i < _itemSlots.Length; i++)
+        {
+            if(_itemSlots[i].isFull == false)
+            {
+                _itemSlots[i].AddItem(_itemName, _quantity, _itemSprite);
+                return;
+            }
+        }
     }
 
     [SerializeField]
@@ -109,6 +117,8 @@ public class InventoryManagerEditor : Editor
     SerializedProperty _itemImage;
     SerializedProperty _itemDescription;
 
+    SerializedProperty _itemSlots;
+
 
     bool showInfo, showCustom = false;
 
@@ -129,6 +139,8 @@ public class InventoryManagerEditor : Editor
         _inventoryDescription = serializedObject.FindProperty("_inventoryDescription");
         _itemImage = serializedObject.FindProperty("_itemImage");
         _itemDescription = serializedObject.FindProperty("_itemDescription");
+
+        _itemSlots = serializedObject.FindProperty("_itemSlots");
 
     }
 
@@ -158,9 +170,11 @@ public class InventoryManagerEditor : Editor
             EditorGUILayout.PropertyField(_itemSlot);
             EditorGUILayout.PropertyField(_inventoryDescription);
             EditorGUILayout.PropertyField(_itemImage);
-            EditorGUILayout.PropertyField(_itemDescription);
+            EditorGUILayout.PropertyField(_itemDescription);    
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
+
+        EditorGUILayout.PropertyField(_itemSlots);
 
         serializedObject.ApplyModifiedProperties();
     }
