@@ -59,12 +59,16 @@ public class InventoryManager : MonoBehaviour
             Time.timeScale = 1;
             _inventoryMenu.SetActive(false);
             _menuOpen = false;
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
         else if (Keyboard.current.iKey.wasPressedThisFrame && !_menuOpen)
         {
             Time.timeScale = (float)_gameState;
             _inventoryMenu.SetActive(true);
             _menuOpen = true;
+
+            Cursor.lockState = CursorLockMode.None;
         }
     
 
@@ -82,6 +86,15 @@ public class InventoryManager : MonoBehaviour
                 _itemSlots[i].AddItem(_itemName, _quantity, _itemSprite);
                 return;
             }
+        }
+    }
+
+    public void DeselectAllSlots()
+    {
+        for (int i = 0; i < _itemSlots.Length; i++)
+        {
+            _itemSlots[i]._selectedShader.SetActive(false);
+            _itemSlots[i]._selectedItem = false;
         }
     }
 
