@@ -72,9 +72,9 @@ public class InventoryManager : MonoBehaviour
 #endif
     }
 
-    public void AddItem(string _itemName, int _quantity, Sprite itemSprite)
+    public void AddItem(string _itemName, int _quantity, Sprite _itemSprite)
     {
-
+        Debug.Log("itemName = " + _itemName + "quantity = " + _quantity + "itemSprite = " + _itemSprite);
     }
 
     [SerializeField]

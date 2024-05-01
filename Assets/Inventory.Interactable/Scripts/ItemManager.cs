@@ -10,7 +10,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     private int _quantity;
     [SerializeField]
-    private Sprite itemSprite;
+    private Sprite _itemSprite;
 
     private InventoryManager _inventoryManager;
 
@@ -19,11 +19,11 @@ public class ItemManager : MonoBehaviour
         _inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            _inventoryManager.AddItem(_itemName, _quantity, itemSprite);
+            _inventoryManager.AddItem(_itemName, _quantity, _itemSprite);
             Destroy(gameObject);
         }
     }
